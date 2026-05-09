@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IslandMed AI
 
-## Getting Started
+> *Healthcare feels closer when every step is clear.*
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A real story from Hainan, 2025.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A Korean friend texted me late at night — high fever, scared, did not know where to go.
+I helped her find Dr. Timothy S. at 海口市人民医院 国际门诊 via WeChat.
+That conversation became this.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## The Moment It Started
 
-## Learn More
+<!-- story animation: open public/story.html -->
 
-To learn more about Next.js, take a look at the following resources:
+> *"Doctor, Tim 이 내일 나오니??"*
+> — 언니, 2025
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## What IslandMed AI Does
 
-## Deploy on Vercel
+Helps foreigners in Hainan find hospitals, translate medical conversations,
+and understand where to go next — without stress.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**4 languages** · EN / 中文 / 한국어 / 日本語  
+**Real hospitals** · Verified clinics in Haikou and Sanya  
+**Symptom guidance** · Know which department before you arrive
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 5 Real Hospitals
+
+| Hospital | City | Languages | Contact |
+|----------|------|-----------|---------|
+| 海口市人民医院 国际门诊 | Haikou | EN CN KR ES FR | 0898-66151001 |
+| 三亚市人民医院 华西三亚医院 | Sanya | EN CN | — |
+| 解放军总医院海南医院 | Sanya | EN CN | — |
+| 博鳌乐城国际医疗旅游先行区 | Qionghai | EN CN | — |
+| 三亚中心医院 | Sanya | EN CN KR | — |
+
+---
+
+## Stack
+
+- Next.js 16 + TypeScript
+- Tailwind CSS
+- GPT-5.5 via Codex
+- Supabase-ready schema
+
+---
+
+## Status
+
+Early prototype. Built from a real need.  
+Not perfect. Honest.
+
+---
+
+*by [Zoe Li](https://github.com/BougieZoe) · Hainan Island, CN · 2025*
