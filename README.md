@@ -2,6 +2,8 @@
 
 > *Healthcare feels closer when every step is clear.*
 
+🌐 **Live demo:** https://islandmed-ai.vercel.app
+
 ---
 
 A real story from Hainan, 2025.
