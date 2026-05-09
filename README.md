@@ -14,9 +14,7 @@ That conversation became this.
 
 ## The Moment It Started
 
-[![story animation](https://bougiezoe.github.io/Islandmed.ai/)](https://bougiezoe.github.io/Islandmed.ai/)
-
-**[▶ Watch the story](https://bougiezoe.github.io/Islandmed.ai/)**
+**[▶ Open the story animation](https://bougiezoe.github.io/Islandmed.ai/)**
 
 > *"Doctor, Tim 이 내일 나오니??"*
 > — 언니, 2025
