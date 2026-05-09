@@ -14,7 +14,9 @@ That conversation became this.
 
 ## The Moment It Started
 
-<!-- story animation: open public/story.html -->
+[![story animation](https://bougiezoe.github.io/Islandmed.ai/)](https://bougiezoe.github.io/Islandmed.ai/)
+
+**[▶ Watch the story](https://bougiezoe.github.io/Islandmed.ai/)**
 
 > *"Doctor, Tim 이 내일 나오니??"*
 > — 언니, 2025
@@ -26,8 +28,8 @@ That conversation became this.
 Helps foreigners in Hainan find hospitals, translate medical conversations,
 and understand where to go next — without stress.
 
-**4 languages** · EN / 中文 / 한국어 / 日本語  
-**Real hospitals** · Verified clinics in Haikou and Sanya  
+**4 languages** · EN / 中文 / 한국어 / 日本語
+**Real hospitals** · Verified clinics in Haikou and Sanya
 **Symptom guidance** · Know which department before you arrive
 
 ---
@@ -55,7 +57,7 @@ and understand where to go next — without stress.
 
 ## Status
 
-Early prototype. Built from a real need.  
+Early prototype. Built from a real need.
 Not perfect. Honest.
 
 ---
