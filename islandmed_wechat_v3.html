@@ -1,0 +1,199 @@
+
+<!-- saved from url=(0056)file:///Users/bougiezoe/Desktop/islandmed_wechat_v3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body><h2 class="sr-only">IslandMed AI story animation with real WeChat UI colors</h2>
+
+<style>
+.scene { display: none; }
+.scene.active { display: flex; }
+.phone {
+  width: 210px;
+  background: #1a1a1a;
+  border-radius: 28px;
+  border: 2px solid #2a2a2a;
+  overflow: hidden;
+}
+.phone-bar {
+  background: #EDEDED;
+  padding: 8px 14px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.5px solid #d0d0d0;
+}
+.phone-bar-name { font-size: 13px; color: #222; font-family: var(--font-sans); font-weight: 500; }
+.chat-area {
+  padding: 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 160px;
+  background: #EDEDED;
+}
+.msg-row { display: flex; gap: 7px; align-items: flex-end; }
+.msg-row.me { flex-direction: row-reverse; }
+.avatar-sm {
+  width: 32px; height: 32px; border-radius: 6px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: white; font-family: var(--font-sans);
+}
+.bubble {
+  max-width: 68%;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-family: var(--font-sans);
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.bubble.show { opacity: 1; transform: translateY(0); }
+.bubble.kr { background: #fff; color: #1a1a1a; border-radius: 4px 12px 12px 12px; }
+.bubble.zoe { background: #95EC69; color: #1a1a1a; border-radius: 12px 4px 12px 12px; }
+.hospital-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 14px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  width: 210px;
+}
+.hospital-card.show { opacity: 1; transform: translateY(0); }
+.hospital-card .hname { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.hospital-card .hdetail { font-size: 11px; color: var(--color-text-secondary); }
+.lang-pill { font-size: 10px; padding: 2px 8px; border-radius: 20px; font-family: var(--font-mono); }
+.island-label { font-size: 11px; color: var(--color-text-secondary); font-family: var(--font-mono); letter-spacing: 0.1em; opacity: 0; transition: opacity 0.6s ease; }
+.island-label.show { opacity: 1; }
+.progress-bar { width: 100%; height: 2px; background: var(--color-border-tertiary); border-radius: 2px; overflow: hidden; margin-top: 14px; }
+.progress-fill { height: 100%; width: 0%; background: #07C160; border-radius: 2px; transition: width 0.1s linear; }
+.scene-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 340px; padding: 1rem 0; gap: 14px; }
+.step-label { font-size: 11px; color: var(--color-text-tertiary); font-family: var(--font-mono); letter-spacing: 0.12em; }
+.restart-btn { font-size: 12px; color: var(--color-text-secondary); background: none; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 6px 16px; cursor: pointer; font-family: var(--font-sans); margin-top: 4px; }
+.restart-btn:hover { background: var(--color-background-secondary); }
+</style>
+
+<div class="scene-wrap">
+  <div class="step-label" id="step-label">dr. timothy s. found ✓</div>
+
+  <div id="scene1" class="scene" style="flex-direction:column; align-items:center;">
+    <div class="phone">
+      <div class="phone-bar">
+        <div class="phone-bar-name">언니</div>
+      </div>
+      <div class="chat-area">
+        <div class="msg-row">
+          <div class="avatar-sm" style="background:#b0c4de;">언니</div>
+          <div class="bubble kr show" id="b1">Doctor, Tim 이 내일 나오니?? 🤒</div>
+        </div>
+        <div class="msg-row">
+          <div class="avatar-sm" style="background:#b0c4de;">언니</div>
+          <div class="bubble kr show" id="b2">지금 고열이 많이 나서 걱정이에요 ㅠㅠ</div>
+        </div>
+        <div class="msg-row me">
+          <div class="avatar-sm" style="background:#07C160;">Z</div>
+          <div class="bubble zoe show" id="b3">월~금만 근무해요!<br>국제 진료실에 있어요 😊</div>
+        </div>
+        <div class="msg-row me">
+          <div class="avatar-sm" style="background:#07C160;">Z</div>
+          <div class="bubble zoe show" id="b4">다른 병원도 찾아볼게요 🗺️</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="scene2" class="scene" style="flex-direction:column; align-items:center; gap:12px;">
+    <svg width="210" height="120" viewBox="0 0 210 120" role="img">
+      <title>Hainan island outline with Haikou marked</title>
+      <path id="island-path" d="M28,65 Q38,28 75,18 Q115,8 155,22 Q182,32 192,56 Q197,76 178,96 Q154,114 116,112 Q76,110 50,100 Q28,88 28,65 Z" fill="none" stroke="var(--color-border-secondary)" stroke-width="1.5" stroke-dasharray="300" stroke-dashoffset="300" style="transition: stroke-dashoffset 1.4s; stroke-dashoffset: 0;"></path>
+      <text x="105" y="68" text-anchor="middle" font-size="10" fill="var(--color-text-tertiary)" font-family="var(--font-sans)">海南岛 Hainan</text>
+      <circle id="dot-hk" cx="90" cy="35" r="5" fill="#07C160" style="transition: r 0.4s;"></circle>
+      <text id="lbl-hk" x="96" y="26" font-size="9" fill="var(--color-text-secondary)" font-family="var(--font-sans)" opacity="1" style="transition: opacity 0.4s;">海口</text>
+    </svg>
+    <div class="island-label show" id="map-label">locating international clinic...</div>
+  </div>
+
+  <div id="scene3" class="scene active" style="flex-direction:column; align-items:center; gap:10px;">
+    <div class="hospital-card show" id="hcard">
+      <div class="hname">海口市人民医院 · 国际门诊</div>
+      <div class="hdetail" style="margin-top:2px;">Dr. Timothy S. · 美国注册家庭医生</div>
+      <div class="hdetail" style="font-size:10px; color:var(--color-text-tertiary); margin-top:2px;">English · 中文 · Español · Français</div>
+      <div class="hdetail" style="font-family:var(--font-mono); margin-top:5px; font-size:10px;">0898-66151001 · Mon–Fri</div>
+      <div style="display:flex; gap:5px; justify-content:center; margin-top:8px; flex-wrap:wrap;">
+        <span class="lang-pill" style="background:#d4f7e4; color:#0f6e56;">EN</span>
+        <span class="lang-pill" style="background:#EEEDFE; color:#3C3489;">中文</span>
+        <span class="lang-pill" style="background:#fff0c0; color:#7a5800;">한국어</span>
+        <span class="lang-pill" style="background:#FAECE7; color:#712B13;">ES · FR</span>
+      </div>
+    </div>
+    <div style="font-size:11px; color:var(--color-text-tertiary); font-family:var(--font-sans);">found. problem solved. 🌴</div>
+    <button class="restart-btn" onclick="restart()">↺ replay</button>
+  </div>
+
+  <div class="progress-bar"><div class="progress-fill" id="prog" style="width: 72%;"></div></div>
+</div>
+
+<script>
+const scenes = ['scene1','scene2','scene3'];
+const labels = ['wei chat · hainan · 2025','mapping the island...','dr. timothy s. found ✓'];
+let timers = [], progTimer;
+function clearAll() { timers.forEach(clearTimeout); timers = []; clearInterval(progTimer); }
+function showScene(n) {
+  scenes.forEach((s,i) => document.getElementById(s).classList.toggle('active', i===n));
+  document.getElementById('step-label').textContent = labels[n];
+}
+function startProgress(dur, cb) {
+  const el = document.getElementById('prog');
+  el.style.width = '0%';
+  let count = 0; const steps = 60; const iv = dur / steps;
+  progTimer = setInterval(() => {
+    count++;
+    el.style.width = Math.round(count/steps*100) + '%';
+    if (count >= steps) { clearInterval(progTimer); if(cb) cb(); }
+  }, iv);
+}
+function scene1() {
+  showScene(0);
+  [[300,'b1'],[1000,'b2'],[2000,'b3'],[2900,'b4']].forEach(([d,id]) => {
+    timers.push(setTimeout(() => document.getElementById(id).classList.add('show'), d));
+  });
+  startProgress(4200, () => timers.push(setTimeout(scene2, 100)));
+}
+function scene2() {
+  showScene(1);
+  const path = document.getElementById('island-path');
+  path.style.transition = 'stroke-dashoffset 1.4s ease';
+  timers.push(setTimeout(() => { path.style.strokeDashoffset = '0'; }, 80));
+  timers.push(setTimeout(() => {
+    const dot = document.getElementById('dot-hk');
+    dot.style.transition = 'r 0.4s ease';
+    dot.setAttribute('r','5');
+    const lbl = document.getElementById('lbl-hk');
+    lbl.style.transition = 'opacity 0.4s';
+    lbl.setAttribute('opacity','1');
+    document.getElementById('map-label').classList.add('show');
+  }, 1600));
+  startProgress(3500, () => timers.push(setTimeout(scene3, 100)));
+}
+function scene3() {
+  showScene(2);
+  timers.push(setTimeout(() => document.getElementById('hcard').classList.add('show'), 300));
+  startProgress(6000, null);
+}
+function restart() {
+  clearAll();
+  ['b1','b2','b3','b4'].forEach(id => document.getElementById(id).classList.remove('show'));
+  document.getElementById('map-label').classList.remove('show');
+  document.getElementById('hcard').classList.remove('show');
+  const path = document.getElementById('island-path');
+  path.style.transition = 'none';
+  path.style.strokeDashoffset = '300';
+  document.getElementById('dot-hk').setAttribute('r','0');
+  document.getElementById('lbl-hk').setAttribute('opacity','0');
+  document.getElementById('prog').style.width = '0%';
+  timers.push(setTimeout(scene1, 80));
+}
+scene1();
+</script>
+</body></html>
