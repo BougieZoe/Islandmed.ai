@@ -107,7 +107,7 @@ export function Hero() {
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
-              href="#early-access"
+              href="/chat"
               className="inline-flex min-h-14 items-center justify-center rounded-full bg-sky-600 px-6 text-base font-semibold text-white shadow-xl shadow-sky-200 transition hover:-translate-y-0.5 hover:bg-sky-700"
             >
               Start with IslandMed AI
