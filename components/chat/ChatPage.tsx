@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { getMatchedHospitals } from "@/lib/chat/hospitals";
 import type { ChatMessage, ChatResponse, UiMessage } from "@/lib/chat/types";
 import { ChatInput } from "./ChatInput";
 import { MessageList } from "./MessageList";
@@ -65,9 +66,15 @@ export function ChatPage() {
         throw new Error(data.error ?? "Request failed");
       }
 
+      const assistantContent = data.message.content;
+      const hospitals = getMatchedHospitals(assistantContent);
+
       setMessages((current) => [
         ...current,
-        createMessage("assistant", data.message.content),
+        {
+          ...createMessage("assistant", assistantContent),
+          ...(hospitals.length > 0 ? { hospitals } : {}),
+        },
       ]);
     } catch {
       setError("Something went wrong. Please try again.");

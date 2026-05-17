@@ -14,6 +14,15 @@ export type ChatResponse = {
   message: ChatMessage & { role: "assistant" };
 };
 
+export type ChatHospitalCard = {
+  name: string;
+  nameZh: string;
+  languages: string[];
+  phone: string;
+  verified: boolean;
+};
+
 export type UiMessage = ChatMessage & {
   id: string;
+  hospitals?: ChatHospitalCard[];
 };

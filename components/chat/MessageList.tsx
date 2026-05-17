@@ -1,4 +1,5 @@
 import type { UiMessage } from "@/lib/chat/types";
+import { HospitalCard } from "./HospitalCard";
 import { MessageBubble } from "./MessageBubble";
 
 type MessageListProps = {
@@ -25,7 +26,23 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
   return (
     <div className="flex flex-col gap-4">
       {messages.map((message) => (
-        <MessageBubble key={message.id} message={message} />
+        <div key={message.id} className="flex flex-col gap-2">
+          <MessageBubble message={message} />
+          {message.role === "assistant" && message.hospitals?.length ? (
+            <div className="flex max-w-[85%] flex-col gap-2 sm:max-w-[75%]">
+              {message.hospitals.map((hospital) => (
+                <HospitalCard
+                  key={`${message.id}-${hospital.nameZh}`}
+                  name={hospital.name}
+                  nameZh={hospital.nameZh}
+                  languages={hospital.languages}
+                  phone={hospital.phone}
+                  verified={hospital.verified}
+                />
+              ))}
+            </div>
+          ) : null}
+        </div>
       ))}
       {isLoading ? (
         <div className="flex justify-start">
