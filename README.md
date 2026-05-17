@@ -16,7 +16,7 @@ That conversation became this.
 
 ## The Moment It Started
 
-**[▶ Open the story animation](https://bougiezoe.github.io/Islandmed.ai/)**
+![IslandMed demo](public/demo.gif)
 
 > *"Doctor, Tim 이 내일 나오니??"*
 > — 언니, 2025
@@ -62,4 +62,4 @@ Not perfect. Honest.
 
 ---
 
-*by [Zoe Li](https://github.com/BougieZoe) · Hainan Island, CN · 2025*
+*by [Zoe Li](https://github.com/BougieZoe) · Hainan Island, CN · 2026*
