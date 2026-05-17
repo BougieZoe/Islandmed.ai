@@ -1,84 +1,50 @@
-# IslandMed AI — Agent Contract
+Update AGENTS.md with these changes:
 
-## What this project is
-IslandMed is a multilingual healthcare companion for foreigners navigating healthcare in Asia.
+1. FIX ERRORS:
+   - Replace "Japan: 119" with "China (Hainan): 120 (ambulance), 110 (police). Never say 119."
+   - Update File Structure to match actual project:
+     app/
+       chat/page.tsx
+       api/chat/route.ts
+     components/
+       chat/
+         ChatPage.tsx
+         ChatInput.tsx
+         MessageBubble.tsx
+         MessageList.tsx
+         HospitalCard.tsx
+     lib/
+       ai/
+         client.ts
+         prompts.ts
+       chat/
+         types.ts
+         hospitals.ts
 
-It is NOT an AI doctor.
-It behaves like: a calm medical concierge, a multilingual healthcare guide.
+2. ADD — Risk & Data Rules section:
+   ## Risk & Data Rules
+   - Do NOT store any user conversation data — sessions are ephemeral
+   - Do NOT add user accounts or auth until legally reviewed
+   - Every chat session must show disclaimer: "IslandMed is not a doctor. This is not medical advice."
+   - If user expresses suicidal ideation or extreme distress → immediately show crisis line, stop normal flow
+   - Never fabricate hospital phone numbers or addresses — only use verified data from lib/chat/hospitals.ts
+   - If hospital data is unverified, say so explicitly — never present uncertain info as fact
 
-## Current scope: LOOP 1 only
-User describes symptoms →
-AI asks follow-up questions →
-AI provides basic guidance →
-AI recommends next steps.
+3. ADD — Hospital Data Rules section:
+   ## Hospital Data Rules
+   - All hospital info lives in lib/chat/hospitals.ts only
+   - Each hospital must have verified: boolean field
+   - verified: true = confirmed from official source (cite the source in a comment)
+   - verified: false = must show "⚠️ Language support unconfirmed" in UI
+   - Never add a phone number without a verified source
+   - For areas outside Haikou/Sanya: do not show phone numbers at all
 
-Do NOT build beyond LOOP 1 yet.
+4. UPDATE — AI Behavior Rules:
+   - Add: "For 120 calls, always add: you can speak English, they will connect you to an interpreter"
+   - Add: "Always mention travel insurance when recommending hospital visits"
+   - Add: "Never claim a hospital supports a specific language unless it appears in verified hospital data"
+   - Add: "For areas outside Haikou and Sanya: say I don't have verified info for this area, search Baidu Maps or go directly"
+   - Change language list from ZH/EN/KO/JA to: auto-match any language the user writes in
 
----
-
-## Tech Stack
-- Next.js (see note below), React, Tailwind
-- Supabase (auth + database)
-- DeepSeek / OpenAI APIs
-
-⚠️ Next.js version note:
-This version may differ from your training data.
-Read node_modules/next/dist/docs/ before writing any code.
-Heed deprecation notices.
-
----
-
-## File Structure
-app/
-  chat/page.tsx          ← chat UI entry point
-components/
-  ChatWindow.tsx         ← main chat component
-  MessageBubble.tsx      ← individual message bubble
-lib/
-  ai/
-    client.ts            ← ALL API calls go here only
-    prompts.ts           ← ALL system prompts go here only
-
----
-
-## Code Rules
-- Max 150 lines per component
-- Max 80 lines per function
-- TypeScript strict — no 'any' types
-- Components: PascalCase, functions: camelCase
-- Before creating a new file: state where it goes and why
-- Add 3-line comment above every new code block:
-    // Purpose:
-    // Input:
-    // Output:
-
----
-
-## AI Behavior Rules (for the IslandMed chatbot)
-- Reply length: 2-3 sentences max
-- Tone: calm, steady — never escalate with user's emotion
-- Language: auto-match user's input language (ZH/EN/KO/JA)
-- Never diagnose, never prescribe, never give specific doses
-- Emergency signals → give local number immediately, stop chatting
-    Japan: 119 (ambulance), say "I need an ambulance" in English
-- Never use attachment language ("I'm not going anywhere", "I'll always be here")
-
----
-
-## Failure Modes — things that must NOT happen
-- Repeating same reply twice → rephrase instead
-- User says "I'm dying" → 119 immediately, no follow-up questions
-- User says "you're my only friend" → redirect to real human support
-- Code generated without TypeScript types
-- New file created without explaining placement
-- More than 3 files changed in one response
-
----
-
-## Important Constraints
-- Do NOT overengineer
-- Do NOT build multi-agent systems yet
-- Do NOT add unnecessary abstractions
-- Focus on conversational quality
-- Focus on clean, maintainable architecture
-- When unsure: ask first, don't assume
+5. UPDATE — What this project is:
+   - Change "foreigners navigating healthcare in Asia" to "foreigners navigating healthcare in Hainan Island, China"
