@@ -33,7 +33,7 @@ const CHAT_HOSPITALS: { matchers: string[]; card: ChatHospitalCard }[] = [
     card: {
       name: "Haikou People's Hospital International Clinic",
       nameZh: "海口市人民医院 国际门诊",
-      languages: ["EN", "中文", "한국어"],
+      languages: ["EN", "中文", "Español", "Français"],
       phone: "0898-66151024",
       verified: true,
     },
@@ -43,7 +43,7 @@ const CHAT_HOSPITALS: { matchers: string[]; card: ChatHospitalCard }[] = [
     card: {
       name: "Sanya Central Hospital",
       nameZh: "三亚中心医院",
-      languages: ["EN", "中文", "한국어"],
+      languages: ["EN", "中文", "Español", "Français"],
       phone: "0898-38224488",
       verified: false,
     },
