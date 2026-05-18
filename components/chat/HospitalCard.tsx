@@ -1,3 +1,4 @@
+cat > ~/Desktop/islandmed-ai/components/chat/HospitalCard.tsx << 'EOF'
 type HospitalCardProps = {
   name: string;
   nameZh: string;
@@ -49,7 +50,26 @@ export function HospitalCard({
           </div>
         ) : null}
 
-        <a
+        <div className="flex gap-2">
+          
+            href={`https://www.google.com/maps/search/${encodeURIComponent(name + " " + nameZh)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
+          >
+            📍 Google Maps
+          </a>
+          
+            href={`https://map.baidu.com/search/${encodeURIComponent(nameZh)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
+          >
+            🗺️ 百度地图
+          </a>
+        </div>
+
+        
           href={telHref}
           className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-sky-600 px-4 text-sm font-semibold text-white transition hover:bg-sky-700 active:bg-sky-800"
         >
@@ -84,3 +104,4 @@ function PhoneIcon() {
     </svg>
   );
 }
+EOF
