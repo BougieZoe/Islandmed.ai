@@ -23,6 +23,7 @@ export function ChatPage() {
   const [error, setError] = useState<string | null>(null);
   const [city, setCity] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
+  const shownHospitalNames = useRef(new Set<string>());
 
   const chatStarted = city !== null;
 
@@ -67,7 +68,12 @@ export function ChatPage() {
       }
 
       const assistantContent = data.message.content;
-      const hospitals = getMatchedHospitals(assistantContent);
+      const hospitals = getMatchedHospitals(assistantContent).filter(
+        (hospital) => !shownHospitalNames.current.has(hospital.name),
+      );
+      for (const hospital of hospitals) {
+        shownHospitalNames.current.add(hospital.name);
+      }
 
       setMessages((current) => [
         ...current,

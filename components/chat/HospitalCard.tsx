@@ -30,7 +30,7 @@ export function HospitalCard({
             ✅ English confirmed
           </span>
         ) : (
-          <span className="inline-flex w-fit items-nter rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-900">
+          <span className="inline-flex w-fit items-center rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-900">
             ⚠️ Language support unconfirmed
           </span>
         )}
@@ -50,25 +50,25 @@ export function HospitalCard({
         ) : null}
 
         <div className="flex gap-2">
-          
+          <a
             href={`https://www.google.com/maps/search/${encodeURIComponent(name + " " + nameZh)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-200 bg-white3 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
+            className="inline-flex min-h-9 flex-1 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
           >
             📍 Google Maps
           </a>
-          
+          <a
             href={`https://map.baidu.com/search/${encodeURIComponent(nameZh)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 inline-flex min-h-9 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
+            className="inline-flex min-h-9 flex-1 items-center justify-center rounded-lg border border-slate-200 bg-white px-3 text-xs font-medium text-slate-700 transition hover:bg-slate-50"
           >
             🗺️ 百度地图
           </a>
         </div>
 
-        
+        <a
           href={telHref}
           className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-sky-600 px-4 text-sm font-semibold text-white transition hover:bg-sky-700 active:bg-sky-800"
         >
@@ -79,7 +79,8 @@ export function HospitalCard({
         {!verified ? (
           <p className="text-center text-xs leading-relaxed text-slate-500">
             We recommend calling ahead to confirm English service.
-          </ null}
+          </p>
+        ) : null}
       </div>
     </article>
   );
