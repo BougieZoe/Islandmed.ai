@@ -14,11 +14,16 @@ export type ChatResponse = {
   message: ChatMessage & { role: "assistant" };
 };
 
+/** Area used to enforce phone rules: numbers only for Haikou / Sanya. */
+export type HospitalArea = "haikou" | "sanya" | "other";
+
 export type ChatHospitalCard = {
   name: string;
   nameZh: string;
   languages: string[];
-  phone: string;
+  /** Only set for verified Haikou/Sanya contacts. Omit outside those cities. */
+  phone?: string;
+  area: HospitalArea;
   verified: boolean;
 };
 

@@ -2,7 +2,7 @@ type HospitalCardProps = {
   name: string;
   nameZh: string;
   languages: string[];
-  phone: string;
+  phone?: string;
   verified: boolean;
 };
 
@@ -13,7 +13,7 @@ export function HospitalCard({
   phone,
   verified,
 }: HospitalCardProps) {
-  const telHref = `tel:${phone.replace(/\s/g, "")}`;
+  const telHref = phone ? `tel:${phone.replace(/\s/g, "")}` : undefined;
 
   return (
     <article className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm">
@@ -68,13 +68,20 @@ export function HospitalCard({
           </a>
         </div>
 
-        <a
-          href={telHref}
-          className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-sky-600 px-4 text-sm font-semibold text-white transition hover:bg-sky-700 active:bg-sky-800"
-        >
-          <PhoneIcon />
-          Call {phone}
-        </a>
+        {phone && telHref ? (
+          <a
+            href={telHref}
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-sky-600 px-4 text-sm font-semibold text-white transition hover:bg-sky-700 active:bg-sky-800"
+          >
+            <PhoneIcon />
+            Call {phone}
+          </a>
+        ) : (
+          <p className="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-center text-xs leading-relaxed text-slate-600">
+            No verified phone for this area — search Baidu Maps or go directly
+            to the hospital.
+          </p>
+        )}
 
         {!verified ? (
           <p className="text-center text-xs leading-relaxed text-slate-500">

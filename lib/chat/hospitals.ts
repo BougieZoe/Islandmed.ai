@@ -1,7 +1,13 @@
 import type { ChatHospitalCard } from "@/lib/chat/types";
 
+/**
+ * Single source of truth for chat hospital cards.
+ * Directory mock data (lib/hospitals/mock-data.ts) is UI prototype only —
+ * never invent phones or languages for chat from that file.
+ */
+
 const STRAIGHT_APOSTROPHE = "'";
-const CURLY_APOSTROPHE = "\u2019"; // '
+const CURLY_APOSTROPHE = "\u2019"; // ’
 
 /** Adds straight (') and curly (') apostrophe variants for each phrase. */
 function expandMatchers(matchers: string[]): string[] {
@@ -34,7 +40,9 @@ const CHAT_HOSPITALS: { matchers: string[]; card: ChatHospitalCard }[] = [
       name: "Haikou People's Hospital International Clinic",
       nameZh: "海口市人民医院 国际门诊",
       languages: ["EN", "中文", "Español", "Français"],
+      // Source: hospital international clinic line (verify before changing)
       phone: "0898-66151024",
+      area: "haikou",
       verified: true,
     },
   },
@@ -43,8 +51,9 @@ const CHAT_HOSPITALS: { matchers: string[]; card: ChatHospitalCard }[] = [
     card: {
       name: "Sanya Central Hospital",
       nameZh: "三亚中心医院",
-      languages: ["EN", "中文", "Español", "Français"],
+      languages: ["EN", "中文"],
       phone: "0898-38224488",
+      area: "sanya",
       verified: false,
     },
   },
@@ -59,6 +68,7 @@ const CHAT_HOSPITALS: { matchers: string[]; card: ChatHospitalCard }[] = [
       nameZh: "三亚市人民医院 华西三亚医院",
       languages: ["EN", "中文"],
       phone: "0898-88856120",
+      area: "sanya",
       verified: false,
     },
   },
@@ -73,6 +83,7 @@ const CHAT_HOSPITALS: { matchers: string[]; card: ChatHospitalCard }[] = [
       nameZh: "解放军总医院海南医院",
       languages: ["EN", "中文"],
       phone: "0898-38865000",
+      area: "sanya",
       verified: false,
     },
   },
@@ -82,14 +93,23 @@ const CHAT_HOSPITALS: { matchers: string[]; card: ChatHospitalCard }[] = [
       name: "Boao Lecheng International Medical Zone",
       nameZh: "博鳌乐城国际医疗旅游先行区",
       languages: ["EN", "中文"],
-      phone: "0898-62861888",
+      // Qionghai — outside Haikou/Sanya: never show phone
+      area: "other",
       verified: false,
     },
   },
 ];
 
+function sanitizeForDisplay(card: ChatHospitalCard): ChatHospitalCard {
+  if (card.area === "haikou" || card.area === "sanya") {
+    return card;
+  }
+
+  return { ...card, phone: undefined };
+}
+
 export function getMatchedHospitals(content: string): ChatHospitalCard[] {
   return CHAT_HOSPITALS.filter(({ matchers }) =>
     matchers.some((matcher) => content.includes(matcher)),
-  ).map(({ card }) => card);
+  ).map(({ card }) => sanitizeForDisplay(card));
 }

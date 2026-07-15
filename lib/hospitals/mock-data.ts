@@ -1,5 +1,9 @@
 import type { Hospital } from "./types";
 
+/**
+ * Prototype directory data for /hospitals UI only.
+ * Chat contact numbers and verified languages must come from lib/chat/hospitals.ts.
+ */
 export const hospitals: Hospital[] = [
   {
     id: "hos_hak_hainan_general",
